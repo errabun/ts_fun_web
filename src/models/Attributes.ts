@@ -2,8 +2,8 @@ export class Attributes<T> {
 
   constructor(private data: T) {}
 
-  get(propName: string): string | number {
-    return this.data[propName]
+  get = <K extends keyof T>(key: K): T[K] => {    //sets up a generic constraint 
+    return this.data[key]                 // K can only ever be a key of T (UserProps in this instance)
   }
 
   set(update: T): void {
